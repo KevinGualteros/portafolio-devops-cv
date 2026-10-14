@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Gualteros | Cloud, Software & Data</title>
+    <!-- Enlazamos tu archivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Tipografía de Google Fonts para un look tecnológico -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navegación Superior -->
+    <nav class="navbar">
+        <div class="logo">KG</div>
+        <ul class="nav-links">
+            <li><a href="#sobre-mi" class="btn-nav">Kevin Gualteros</a></li>
+            <li><a href="#teoria" class="btn-nav">Teoría</a></li>
+            <li><a href="#practica" class="btn-nav">Práctica</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Sección 1: Perfil Profesional -->
+        <section id="sobre-mi" class="hero-section">
+            <div class="hero-content">
+                <p class="greeting">Hola, soy Kevin Gualteros</p>
+                <h1>Ingeniero Electrónico  <br>Cloud, Software & Data</h1>
+                <p class="description">
+                    Egresado de Ingeniería Electrónica de la Universidad Distrital, con formación multidisciplinaria en programación, bases de datos, análisis de datos, redes y automatización. Me interesa conectar software e infraestructura para resolver problemas mediante proyectos prácticos, desde aplicaciones web hasta sistemas de comunicación y soluciones cloud. Busco una oportunidad profesional de nivel junior donde aportar pensamiento analítico, capacidad de aprendizaje y conocimientos de ingeniería, mientras sigo fortaleciendo mis habilidades en Cloud/DevOps, desarrollo de software y datos.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/kevin-gualteros-jimenez-electronic-engineer/" target="_blank" class="btn-social">LinkedIn</a>
+                    <a href="https://github.com/KevinGualteros" target="_blank" class="btn-social">GitHub</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='FotoCV.jpeg') }}" alt="Foto de Kevin Gualteros" class="profile-pic">
+            </div>
+        </section>
+
+        <!-- Sección 2: Teoría -->
+        <section id="teoria" class="content-section">
+            <h2>Teoría y Fundamentos</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <h3>Infraestructura Cloud & DevOps</h3>
+                    <p>Fundamentos de computación en la nube con AWS (EC2, VPC y RDS), infraestructura como código con Terraform y automatización CI/CD con GitHub Actions. También estudio conceptos de Linux, contenedores con Docker y Kubernetes, y automatización de flujos con n8n. Mi objetivo es profundizar en el despliegue, la seguridad, la automatización y la optimización de costos en la nube.</p>
+                </div>
+                <div class="card">
+                    <h3>Desarrollo Full-Stack & Scripting</h3>
+                    <p>Desarrollo de interfaces con HTML, CSS y JavaScript, y aplicaciones backend con Python y Flask. Integración de formularios, rutas, plantillas dinámicas y bases de datos relacionales mediante SQL. Actualmente trabajo en la conexión entre Flask y MySQL en un entorno local, fortaleciendo la validación de datos, la persistencia y las buenas prácticas de desarrollo.</p>
+                </div>
+                <div class="card">
+                    <h3>Análisis de Datos e IA</h3>
+                    <p>Fundamentos de análisis de datos, inteligencia computacional, algoritmos de optimización, fronteras de decisión y clasificación de datos, con uso académico de MATLAB. He desarrollado un proyecto de machine learning aplicado a la clasificación de datos relacionados con el cáncer de mama, con interés en comprender el comportamiento de los modelos, interpretar métricas y evaluar sus limitaciones.</p>
+                </div>
+                <div class="card">
+                    <h3>Redes, Hardware & Automatización</h3>
+                    <p>Fundamentos de redes TCP/IP, direccionamiento, conectividad y diagnóstico de comunicaciones. Experiencia académica con comunicación industrial mediante Modbus TCP/IP, integración de PLC y HMI, y herramientas y entornos asociados a Yaskawa y Schneider Electric EcoStruxure. Esta formación conecta la electrónica, las telecomunicaciones, el control y las redes de tecnología operacional (OT).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: Práctica (Proyectos) -->
+        <section id="practica" class="content-section">
+            <h2>Práctica y Proyectos</h2>
+            <div class="projects-container">
+                <!-- Proyecto 1: Este mismo portafolio -->
+                <div class="project-card">
+                    <h3>Portafolio Full-Stack & Cloud</h3>
+                    <p>Desarrollo de esta plataforma con HTML, CSS y JavaScript en el frontend, y Python con Flask en el backend. Incluye un formulario de comentarios conectado a una base de datos relacional en el entorno local. La siguiente etapa contempla desplegar la aplicación en AWS mediante EC2, VPC y RDS, definir la infraestructura con Terraform y automatizar validaciones y despliegues con GitHub Actions.</p>
+                    <a href="https://github.com/KevinGualteros/portafolio-devops-cv" target="_blank" class="btn-project">Ver Repositorio</a>
+                </div>
+                <!-- Proyecto 2: IA y Datos (MATLAB) -->
+                <div class="project-card">
+                    <h3>Machine Learning: Cáncer de Mama</h3>
+                    <p>Proyecto de clasificación aplicado a datos relacionados con el cáncer de mama. Se centra en el proceso de análisis de datos y modelado, la comprensión de los resultados y la evaluación del comportamiento del clasificador. La documentación del proyecto permitirá consultar el código, la metodología utilizada, las evidencias y las conclusiones obtenidas.</p>
+                    <a href="https://github.com/KevinGualteros/machine-learning-ic" target="_blank" class="btn-project">Ver Presentación</a>
+                </div>
+                <!-- Proyecto 3: Redes / OT -->
+                <div class="project-card">
+                    <h3>Redes y Comunicación Industrial</h3>
+                    <p>Proyecto académico orientado a la conectividad entre dispositivos y sistemas de control industrial. Aborda la comunicación IP, el intercambio de datos mediante Modbus TCP/IP y la integración de PLC y HMI, relacionando los fundamentos de redes con la automatización y las tecnologías operacionales (OT).</p>
+                    <a href="https://github.com/KevinGualteros/electronica-industrial" target="_blank" class="btn-project">Ver Documentación</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulario de Feedback -->
+        <section id="feedback" class="feedback-section">
+            <h2>Dejar Feedback</h2>
+            <p>Este formulario recibe comentarios mediante Python y Flask. Durante la etapa de desarrollo, la persistencia de los mensajes se prueba con una base de datos relacional en el entorno local.</p>
+            <form action="/submit" method="POST" class="feedback-form">
+                <div class="input-group">
+                    <input type="text" name="nombre" placeholder="Tu nombre o empresa" required>
+                </div>
+                <div class="input-group">
+                    <textarea name="mensaje" placeholder="Comparte un comentario, pregunta o sugerencia..." rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Comentario</button>
+            </form>
+
+            <!-- Zona para mostrar los comentarios de la BD -->
+            <div class="comments-display" style="margin-top: 3rem; text-align: left;">
+                <h3 style="color: var(--accent-color); margin-bottom: 1.5rem;">Feedback de la Comunidad</h3>
+
+                {% if comentarios %}
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    {% for c in comentarios %}
+                        <div style="background-color: var(--bg-main); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <strong style="color: var(--text-primary);">{{ c.nombre }}</strong>
+                                <small style="color: var(--text-secondary);">{{ c.fecha.strftime('%Y-%m-%d %H:%M') }}</small>
+                            </div>
+                            <p style="color: var(--text-secondary); margin: 0;">{{ c.mensaje }}</p>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% else %}
+                    <p style="color: var(--text-secondary);">Todavía no hay comentarios. Puedes utilizar el formulario para dejar el primero.</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <!-- Botón Flotante para abrir el chat -->
+    <button id="chatbot-toggle-btn" class="chatbot-toggle-btn">
+        💬 Chatear con IA
+    </button>
+
+    <!-- Interfaz del Chatbot IA (Oculta por defecto) -->
+    <div id="chatbot-container" class="chatbot-container hidden">
+        <div class="chatbot-header">
+            <div class="header-left">
+                <span class="bot-status"></span>
+                Chatbot Kevin IA
+            </div>
+            <button id="close-chat-btn" class="close-chat-btn">✖</button>
+        </div>
+        <div class="chatbot-messages" id="chat-messages">
+            <div class="message bot-message">¡Hola! Soy el asistente virtual del portafolio de Kevin. Puedes preguntarme sobre su formación, proyectos y tecnologías.</div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chat-input" placeholder="Escribe tu pregunta...">
+            <button id="btn-send-chat">Enviar</button>
+        </div>
+    </div>
+
+    <!-- Enlazamos tu archivo JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
