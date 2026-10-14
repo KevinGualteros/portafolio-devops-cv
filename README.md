@@ -1,0 +1,2 @@
+# portafolio-devops-cv
+Desarrollo de plataforma con HTML, CSS y JavaScript en el frontend, y Python con Flask en el backend. Incluye un formulario de comentarios conectado a una base de datos relacional. Contempla desplegar la aplicación en AWS mediante EC2, VPC y RDS, definir la infraestructura con Terraform y automatizar validaciones y despliegues con GitHub Actions.
