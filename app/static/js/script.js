@@ -52,7 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ action: "sendMessage", chatInput: userText })
+                body: JSON.stringify({ 
+                    action: "sendMessage", 
+                    chatInput: userText,
+                    sessionId: "user-session-" + location.hostname // Genera un ID de sesión válido
+                })
             });
 
             const data = await response.json();
