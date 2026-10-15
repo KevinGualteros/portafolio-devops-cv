@@ -91,6 +91,14 @@ resource "aws_security_group" "web_sg" {
   description = "Permitir trafico HTTP y SSH al servidor web"
   vpc_id      = aws_vpc.main_vpc.id
 
+  # Regla de entrada: Permitir acceso a la interfaz de n8n (Puerto 5678)
+  ingress {
+    from_port   = 5678
+    to_port     = 5678
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   # Regla de entrada: Permitir HTTPS (Puerto 443)
   ingress {
     from_port   = 443
