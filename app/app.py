@@ -54,7 +54,7 @@ def submit_feedback():
         try:
             with conexion.cursor() as cursor:
                 # Insertamos los datos de forma segura para evitar inyección SQL
-                sql = "INSERT INTO feedback (nombre, mensaje) VALUES (%s, %s)"
+                sql = "INSERT INTO comentarios (nombre, mensaje) VALUES (%s, %s)"
                 cursor.execute(sql, (nombre, mensaje))
             conexion.commit() # Guardamos los cambios
         finally:
