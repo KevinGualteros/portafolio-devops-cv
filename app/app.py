@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 import os
 from dotenv import load_dotenv
-import pymysql
 
 # Carga las variables ocultas del archivo .env
 load_dotenv() 
@@ -34,8 +33,8 @@ def index():
     if conexion:
         try:
             with conexion.cursor() as cursor:
-                # Traemos todos los comentarios de la tabla CORRECTA
-                cursor.execute("SELECT nombre, mensaje, fecha FROM comentarios ORDER BY fecha DESC")
+                # Restaurado a la tabla 'feedback'
+                cursor.execute("SELECT nombre, mensaje, fecha FROM feedback ORDER BY fecha DESC")
                 comentarios = cursor.fetchall()
         finally:
             conexion.close()
@@ -53,8 +52,8 @@ def submit_feedback():
     if conexion:
         try:
             with conexion.cursor() as cursor:
-                # La única corrección real: la tabla es 'comentarios'
-                sql = "INSERT INTO comentarios (nombre, mensaje) VALUES (%s, %s)"
+                # Restaurado a la tabla 'feedback'
+                sql = "INSERT INTO feedback (nombre, mensaje) VALUES (%s, %s)"
                 cursor.execute(sql, (nombre, mensaje))
             conexion.commit()
         finally:
