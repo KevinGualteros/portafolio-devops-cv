@@ -34,8 +34,8 @@ def index():
     if conexion:
         try:
             with conexion.cursor() as cursor:
-                # Traemos todos los comentarios ordenados del más nuevo al más viejo
-                cursor.execute("SELECT nombre, mensaje, fecha FROM feedback ORDER BY fecha DESC")
+                # Traemos todos los comentarios de la tabla CORRECTA
+                cursor.execute("SELECT nombre, mensaje, fecha FROM comentarios ORDER BY fecha DESC")
                 comentarios = cursor.fetchall()
         finally:
             conexion.close()
