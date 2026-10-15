@@ -49,16 +49,17 @@ def submit_feedback():
     nombre = request.form.get('nombre')
     mensaje = request.form.get('mensaje')
     
-    try:
-        # Crea el registro usando tu modelo Comentario
-        nuevo_comentario = Comentario(nombre=nombre, mensaje=mensaje)
-        db.session.add(nuevo_comentario)
-        db.session.commit()
-    except Exception as e:
-        # Si hay error, ahora sí quedará registrado en los logs
-        print(f"Error al guardar el comentario: {e}")
-        db.session.rollback()
-        
+    conexion = get_db_connection()
+    if conexion:
+        try:
+            with conexion.cursor() as cursor:
+                # La única corrección real: la tabla es 'comentarios'
+                sql = "INSERT INTO comentarios (nombre, mensaje) VALUES (%s, %s)"
+                cursor.execute(sql, (nombre, mensaje))
+            conexion.commit()
+        finally:
+            conexion.close()
+            
     return redirect(url_for('index') + '#feedback')
 
 # 3. Ruta para el Chatbot (Sin cambios por ahora)
