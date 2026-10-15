@@ -5,9 +5,12 @@ app = Flask(__name__)
 
 import os
 from dotenv import load_dotenv
+import pymysql
 
-# Carga las variables ocultas del archivo .env
-load_dotenv() 
+# Forzar la lectura del .env usando la ruta absoluta en la EC2
+from os.path import join, dirname
+dotenv_path = join('/home/ubuntu/portafolio-devops-cv', '.env')
+load_dotenv(dotenv_path)
 
 DB_CONFIG = {
     'host': os.environ.get('DB_HOST', 'localhost'),
