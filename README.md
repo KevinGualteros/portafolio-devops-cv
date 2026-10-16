@@ -1,214 +1,148 @@
 # Portafolio DevOps CV
 
-Portafolio profesional desarrollado con Flask, HTML, CSS y JavaScript para presentar experiencia, proyectos y conocimientos en ingeniería, cloud y DevOps. La aplicación incluye un formulario de comentarios con persistencia en MySQL y una infraestructura de despliegue en AWS gestionada con Terraform.
-
-## Descripción general
-
-Este repositorio combina tres capas clave:
-
-- Frontend: landing page profesional con diseño responsive y contenido personal.
-- Backend: API y lógica de negocio desarrollada en Python con Flask.
-- Infraestructura: recursos en AWS (VPC, EC2, RDS, grupos de seguridad) definidos con Terraform.
-
-La idea principal es demostrar habilidades en:
-
-- Desarrollo web full-stack
-- Infraestructura como código
-- Despliegue y automatización en la nube
-- Proyectos de DevOps aplicados a un caso real
-
-## Stack tecnológico
-
-- Python 3
-- Flask 3.0.2
-- PyMySQL 1.1.0
-- MySQL / RDS
-- HTML, CSS y JavaScript
-- Terraform
-- AWS EC2 y RDS
-- Gunicorn
-- GitHub Actions (planeado / en evolución)
-
-## Estructura del repositorio
-
-```text
-portafolio-devops-cv/
-├── app/
-│   ├── app.py
-│   ├── requirements.txt
-│   ├── static/
-│   │   ├── css/
-│   │   ├── js/
-│   │   └── FotoCV.jpeg
-│   └── templates/
-│       └── index.html
-├── infra/
-│   ├── main.tf
-│   ├── outputs.tf
-│   ├── userdata.sh
-│   ├── variables.tf
-│   └── terraform.tfstate
-├── .gitignore
-├── README.md
-├── terraform.tfstate
-└── .env.example
-```
+Aplicación web de portafolio desarrollada con Flask, HTML, CSS y JavaScript.
+Incluye un formulario de comentarios que persiste en MySQL y archivos Terraform
+para preparar infraestructura de demostración en AWS.
 
 ## Funcionalidades
 
-- Landing page profesional con información académica, experiencia y proyectos.
-- Sección de proyectos y formación técnica.
-- Formulario de contacto / comentarios almacenado en base de datos.
-- Visualización de comentarios desde la base de datos en la página principal.
-- Chatbot de prueba integrado en la interfaz.
-- Infraestructura desplegable con Terraform para un entorno AWS reproducible.
+- Presentación de perfil, formación y proyectos.
+- Formulario para guardar y mostrar comentarios en MySQL.
+- Ruta `/chat` con respuesta simulada; no es una integración activa con un
+  servicio de inteligencia artificial.
+- Definición de infraestructura AWS con Terraform.
 
-## Requisitos locales
+## Tecnologías
 
-Antes de ejecutar la aplicación localmente, asegúrate de tener instalado:
+- Python 3 y Flask
+- PyMySQL y MySQL
+- HTML, CSS y JavaScript
+- Terraform y AWS (EC2, VPC y RDS)
+- Gunicorn para servir la aplicación en el despliegue de ejemplo
 
-- Python 3.10+
-- pip
-- MySQL Server o un servicio MySQL accesible
-- Git
+Las dependencias de Python están declaradas en `app/requirements.txt`.
 
-## Configuración local
+## Estructura
 
-1. Clona el repositorio:
-
-```bash
-git clone https://github.com/KevinGualteros/portafolio-devops-cv.git
-cd portafolio-devops-cv
+```text
+app/
+  app.py
+  requirements.txt
+  static/
+  templates/
+infra/
+  main.tf
+  outputs.tf
+  userdata.sh
+  variables.tf
+.github/
+  workflows/
+.env.example
+README.md
 ```
 
-2. Crea un entorno virtual:
+## Ejecución local
 
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-# o en Windows:
-# venv\Scripts\activate
-```
+Requisitos: Python 3, pip y una instancia MySQL accesible.
 
-3. Instala las dependencias:
+1. Clona el repositorio y crea un entorno virtual:
 
-```bash
-pip install -r app/requirements.txt
-```
+   ```powershell
+   git clone https://github.com/KevinGualteros/portafolio-devops-cv.git
+   cd portafolio-devops-cv
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   ```
 
-4. Crea el archivo `.env` a partir del ejemplo:
+   En Linux o macOS, activa el entorno con `source .venv/bin/activate`.
 
-```bash
-cp .env.example .env
-```
+2. Instala las dependencias:
 
-5. Ajusta las variables de entorno en `.env`:
+   ```shell
+   python -m pip install -r app/requirements.txt
+   ```
 
-```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=tu_password
-DB_NAME=portafolio_db
-```
+3. Crea la base de datos y la tabla que utiliza el formulario:
 
-6. Crea la base de datos y la tabla `feedback`:
+   ```sql
+   CREATE DATABASE IF NOT EXISTS portafolio_db;
+   USE portafolio_db;
 
-```sql
-CREATE DATABASE IF NOT EXISTS portafolio_db;
-USE portafolio_db;
+   CREATE TABLE IF NOT EXISTS feedback (
+     id INT AUTO_INCREMENT PRIMARY KEY,
+     nombre VARCHAR(100) NOT NULL,
+     mensaje TEXT NOT NULL,
+     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+   ```
 
-CREATE TABLE IF NOT EXISTS feedback (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nombre VARCHAR(100) NOT NULL,
-  mensaje TEXT NOT NULL,
-  fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
+4. Define `DB_HOST`, `DB_USER`, `DB_PASSWORD` y `DB_NAME` en el entorno donde
+   iniciarás la aplicación. Por ejemplo, en PowerShell:
 
-7. Ejecuta la aplicación:
+   ```powershell
+   $env:DB_HOST = "localhost"
+   $env:DB_USER = "root"
+   $env:DB_PASSWORD = "<contraseña-local>"
+   $env:DB_NAME = "portafolio_db"
+   ```
 
-```bash
-cd app
-python app.py
-```
+   Aunque existe `.env.example`, la aplicación intenta cargar `.env` desde una
+   ruta fija de Linux. Para desarrollo local en otro sistema, configura las
+   variables en el entorno como en el ejemplo anterior.
 
-La aplicación estará disponible en:
+5. Inicia la aplicación:
 
-- http://localhost:5000
+   ```powershell
+   Set-Location app
+   python app.py
+   ```
 
-## Variables de entorno
+   Abre `http://localhost:5000` en el navegador. El servidor integrado de Flask
+   se ejecuta en modo de depuración según la configuración actual; úsalo solo
+   para desarrollo local.
 
-El proyecto usa un archivo `.env` para configurar la conexión a la base de datos.
+## Infraestructura de demostración en AWS
 
-Ejemplo de configuración:
+La carpeta `infra/` define recursos de red, una instancia EC2 y una instancia
+RDS MySQL. La región configurada actualmente es `us-east-1`; el archivo
+`userdata.sh` prepara la aplicación y el servicio Gunicorn en la instancia.
 
-```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=tu_password
-DB_NAME=portafolio_db
-```
+Hay una diferencia de rutas que debe resolverse antes de desplegar: `app/app.py`
+busca `.env` en la raíz del repositorio en una ruta fija de Linux, mientras que
+`infra/userdata.sh` crea el archivo dentro de `app/`. En el estado actual, la
+aplicación no leerá automáticamente las variables que inicializa ese script.
 
-Nota: el archivo `.env` no debe versionarse. Se encuentra excluido en `.gitignore`.
+**No apliques esta configuración en producción tal como está.** Antes de
+desplegar, revisa y sustituye la gestión de credenciales definida en los
+archivos Terraform y de inicialización; usa un gestor de secretos y evita
+guardar contraseñas en el código, en el estado de Terraform o en los datos de
+usuario. Si alguna credencial incluida en una versión anterior llegó a usarse,
+rótala. Revisa también las reglas de red y los costos de los recursos de AWS.
 
-## Despliegue en AWS con Terraform
+Cuando la configuración haya sido revisada y tengas credenciales AWS válidas:
 
-La carpeta `infra/` contiene la infraestructura necesaria para crear un entorno en AWS.
-
-### Recursos incluidos
-
-- VPC
-- Subredes públicas
-- Internet Gateway
-- Security Groups
-- Instancia EC2
-- Base de datos RDS MySQL
-- User data para automatizar el despliegue de la app
-
-### Ejecución
-
-```bash
+```shell
 cd infra
 terraform init
+terraform validate
 terraform plan
-terraform apply
 ```
 
-El despliegue usa `userdata.sh` para:
+Revisa el plan antes de aplicar cambios. El despliegue puede generar costos.
+El resultado `direccion_ip_portafolio` muestra la IP pública de EC2. Para
+eliminar los recursos de demostración, revisa el plan de destrucción antes de
+ejecutar `terraform destroy`.
 
-- instalar dependencias de Python
-- clonar el repositorio
-- preparar el entorno virtual
-- instalar Flask y Gunicorn
-- crear el archivo `.env` con la configuración de la base de datos
-- crear la tabla `feedback`
-- levantar el servicio con Systemd en el puerto 80
+## Configuración y seguridad
 
-## Seguridad
-
-Este repositorio es un proyecto educativo y de portfolio, pero conviene aplicar buenas prácticas de seguridad:
-
-- No incluir credenciales reales en el repositorio.
-- Usar AWS Secrets Manager o variables de entorno cifradas en entornos reales.
-- Evitar `debug=True` en producción.
-- Restringir puertos y accesos en grupos de seguridad.
-- Mantener dependencias actualizadas.
-
-## Roadmap
-
-- Mejorar la gestión de variables de entorno y secretos.
-- Añadir pruebas automatizadas para la base de datos y rutas del backend.
-- Integrar un chatbot real con un proveedor externo de IA.
-- Configurar CI/CD completo con GitHub Actions.
-- Mejorar la seguridad y la arquitectura para entorno de producción.
-
-## Licencia
-
-Este proyecto está destinado a uso personal y académico. Revisa el alcance de licencia antes de reutilizarlo en entornos comerciales.
+- `.env` no debe versionarse; usa `.env.example` como referencia y coloca
+  valores reales únicamente en el entorno local.
+- No publiques contraseñas, claves de acceso ni archivos de estado de
+  Terraform.
+- Restringe los puertos y orígenes de red a lo necesario para tu entorno.
+- Desactiva el modo de depuración y configura un servidor adecuado antes de
+  cualquier despliegue público.
 
 ## Autor
 
-Kevin Gualteros
-
-- GitHub: https://github.com/KevinGualteros
-- LinkedIn: https://www.linkedin.com/in/kevin-gualteros-jimenez-electronic-engineer/
+Kevin Gualteros · [GitHub](https://github.com/KevinGualteros)
