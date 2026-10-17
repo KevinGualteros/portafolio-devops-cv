@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kevin Gualteros | Ingeniería, Cloud & DevOps</title>
-    <!-- Enlazamos tu archivo CSS -->
+    <!-- Icono para dispositivos Apple -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <!-- Iconos para pestañas de navegador estándar -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <!-- Manifiesto para dispositivos Android / PWA -->
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+    <!-- Enlazamos el archivo CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <!-- Tipografía de Google Fonts para un look tecnológico -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -26,9 +33,9 @@
         <section id="sobre-mi" class="hero-section">
             <div class="hero-content">
                 <p class="greeting">Hola, soy Kevin Gualteros</p>
-                <h1>Ingeniero Electrónico  <br>Cloud & DevOps | Software & Data</h1>
+                <h1>Ingeniero Electrónico  <br>Cloud, Software & Data</h1>
                 <p class="description">
-                    Ingeniero Electrónico egresado de la Universidad Distrital Francisco José de Caldas. He complementado mi formación con proyectos de desarrollo web, infraestructura en AWS, automatización con Terraform, redes e inteligencia artificial. En 2025 adquirí seis meses de experiencia de aprendizaje práctico en Cloud y DevOps junto a un ingeniero senior, y he seguido fortaleciendo mis conocimientos con proyectos propios y tutorías académicas. Busco una oportunidad junior o trainee en la que pueda aportar fundamentos sólidos de ingeniería, pensamiento analítico y disposición para aprender en equipos de desarrollo, nube y datos.
+                    Ingeniero Electrónico egresado de la Universidad Distrital Francisco José de Caldas. He complementado mi formación con proyectos de desarrollo web, infraestructura en AWS, automatización con Terraform, redes e inteligencia artificial. En 2025 adquirí seis meses de experiencia de aprendizaje práctico en Cloud y DevOps como asistente para un ingeniero senior, y he seguido fortaleciendo mis conocimientos con proyectos propios y tutorías académicas. Busco una oportunidad junior o trainee en la que pueda aportar fundamentos sólidos de ingeniería, pensamiento analítico y disposición para aprender en equipos de desarrollo, nube y datos.
                 </p>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/kevin-gualteros-jimenez-electronic-engineer/" target="_blank" class="btn-social">LinkedIn</a>
@@ -148,7 +155,7 @@
         </div>
     </div>
 
-    <!-- Enlazamos tu archivo JavaScript -->
+    <!-- Enlazamos el archivo JavaScript -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
